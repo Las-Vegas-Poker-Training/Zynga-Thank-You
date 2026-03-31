@@ -46,11 +46,13 @@
         .video-wrapper {
             position: relative;
             z-index: 10;
-            width: 350px; 
-            height: 622px;
+            /* Using aspect-ratio ensures the border always matches the video dimensions */
+            width: auto;
+            height: 80vh; 
+            aspect-ratio: 1080 / 1920;
             border: 3px solid var(--zynga-red);
             box-shadow: 0 0 40px rgba(214, 4, 5, 0.5);
-            background: #000;
+            background: transparent; 
             display: flex;
             justify-content: center;
             align-items: center;
@@ -58,20 +60,18 @@
             overflow: hidden;
         }
 
-        /* Mobile Optimization */
         @media (max-width: 600px) {
             .video-wrapper {
-                width: 80vw; /* Adjusted for better side clearance */
-                height: 70vh; /* Keeps it clear of the bottom mobile nav */
+                height: 70vh; /* Scaled for mobile navigation safety */
             }
         }
 
         video {
             width: 100%;
             height: 100%;
-            /* CHANGE: "contain" ensures the full width of the video is shown */
             object-fit: contain; 
             display: none;
+            background: #000;
         }
 
         /* UI Overlays */
@@ -127,7 +127,6 @@
         }
 
         .glitch-active { animation: glitch-fx 0.2s infinite; }
-
         .flash { background-color: white !important; transition: background 0.1s; }
     </style>
 </head>
